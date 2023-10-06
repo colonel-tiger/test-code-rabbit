@@ -6,12 +6,12 @@ permissions:
 
 on:
   pull_request:
-    types: [opened, synchronize, reopened]
+    types: [opened]
     branches-ignore:
       - master
       - main
   pull_request_review_comment:
-    types: [created, synchronize, reopened]
+    types: [created]
   issue_comment:
     types: [created]
 
