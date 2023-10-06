@@ -7,7 +7,7 @@
       <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
     </a>
   </div>
-  <HelloWorld :msg="msg" />
+  <HelloWorld :msg="msg" @input="msgChange" />
 </template>
 
 <script setup lang="ts">
@@ -15,6 +15,10 @@ import { ref } from "vue";
 import HelloWorld from "./components/HelloWorld.vue";
 
 const msg = ref("Hello Vite + Vue");
+
+const msgChange = (_msg: string) => {
+  msg.value = _msg;
+};
 </script>
 
 <style scoped>
