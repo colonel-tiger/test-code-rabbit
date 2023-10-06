@@ -3,7 +3,7 @@
 
   <div class="card">
     <button type="button" @click="countUp">count is {{ count }}</button>
-    <button typr="button" @click="$emit('click')">Change!</button>
+    <button type="button" @click="$emit('click')">Change!</button>
     <p>
       Edit
       <code>components/HelloWorld.vue</code> to test HMR
