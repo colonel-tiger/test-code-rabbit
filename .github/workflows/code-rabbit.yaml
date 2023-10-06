@@ -25,8 +25,6 @@ jobs:
     if: (github.event_name == 'issue_comment' && contains(github.event.comment.body, '[run review]') && github.event.issue.pull_request) ||　(github.event_name == 'pull_request_review_comment' && contains(github.event.comment.body, '[run review]')) || (github.event_name == 'pull_request' && !contains(github.event.pull_request.title, 'release') && !contains(github.event.pull_request.title, 'Release'))
     timeout-minutes: 15
     steps:
-      - name: Checkout
-        uses: actions/checkout@main
       - uses: coderabbitai/openai-pr-reviewer@latest
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -74,3 +72,7 @@ jobs:
             - New Feature: UIに統合ページが追加されました
             ```
             回答は50-100語以内にしてください。この回答はそのままリリースノートに使用されるので、追加のコメントは避けてください。
+      - name: Checkout
+        uses: actions/checkout@main
+      - name: Checkout
+        uses: actions/checkout@master
