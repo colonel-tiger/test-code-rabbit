@@ -7,11 +7,14 @@
       <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
     </a>
   </div>
-  <HelloWorld msg="Vite + Vue" />
+  <HelloWorld :msg="msg" />
 </template>
 
 <script setup lang="ts">
+import { ref } from "vue";
 import HelloWorld from "./components/HelloWorld.vue";
+
+const msg = ref("Hello Vite + Vue");
 </script>
 
 <style scoped>
