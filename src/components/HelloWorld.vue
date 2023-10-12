@@ -3,6 +3,7 @@
 
   <div class="card">
     <button type="button" @click="countUp">count is {{ count }}</button>
+    <button type="button" @click="$emit('click')">Change!</button>
     <p>
       Edit
       <code>components/HelloWorld.vue</code> to test HMR
@@ -27,6 +28,7 @@
 import { ref } from "vue";
 
 defineProps<{ msg: string }>();
+defineEmits<{ (e: "click"): void }>();
 
 const count = ref(0);
 
