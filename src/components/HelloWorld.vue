@@ -21,6 +21,7 @@
     in your IDE for a better DX
   </p>
   <p class="read-the-docs">Click on the Vite and Vue logos to learn more</p>
+  <p>hogefuga</p>
 </template>
 
 <script setup lang="ts">
@@ -32,7 +33,6 @@ const count = ref(0);
 
 const countUp = () => {
   count.value++;
-  console.log(count.value);
 };
 </script>
 
