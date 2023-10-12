@@ -7,6 +7,7 @@
       Edit
       <code>components/HelloWorld.vue</code> to test HMR
     </p>
+    <span>hogefuga</span>
   </div>
 
   <p>
@@ -32,6 +33,7 @@ const count = ref(0);
 
 const countUp = () => {
   count.value++;
+  console.log(count.value);
 };
 </script>
 
