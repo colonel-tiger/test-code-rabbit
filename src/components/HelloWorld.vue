@@ -7,7 +7,6 @@
       Edit
       <code>components/HelloWorld.vue</code> to test HMR
     </p>
-    <span>hogefuga</span>
   </div>
 
   <p>
@@ -22,7 +21,6 @@
     in your IDE for a better DX
   </p>
   <p class="read-the-docs">Click on the Vite and Vue logos to learn more</p>
-  <p>hogefuga</p>
 </template>
 
 <script setup lang="ts">
