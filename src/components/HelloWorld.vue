@@ -33,7 +33,6 @@ const count = ref(0);
 
 const countUp = () => {
   count.value++;
-  console.log(count.value);
 };
 </script>
 
