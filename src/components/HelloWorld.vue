@@ -7,7 +7,6 @@
       Edit
       <code>components/HelloWorld.vue</code> to test HMR
     </p>
-    <span>hogefuga</span>
   </div>
 
   <p>
