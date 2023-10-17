@@ -5,9 +5,11 @@ permissions:
   pull-requests: write
 
 on:
-  pull_request_target:
+  pull_request:
     types: [opened]
   pull_request_review_comment:
+    types: [created]
+  issue_comment:
     types: [created]
 
 concurrency:
