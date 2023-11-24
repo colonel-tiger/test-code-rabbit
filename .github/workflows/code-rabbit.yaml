@@ -7,6 +7,10 @@ permissions:
 on:
   pull_request:
     types: [opened, ready_for_review] # PR作成時とready for reviewをクリックした時
+  pull_request_review_comment:
+    types: [created, edited]
+  issue_comment:
+    types: [created, edited]
 
 concurrency:
   group: ${{ github.repository }}-${{ github.event.number || github.head_ref ||
