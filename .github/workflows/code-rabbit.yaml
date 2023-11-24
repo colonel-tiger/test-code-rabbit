@@ -6,7 +6,7 @@ permissions:
 
 on:
   pull_request:
-    types: [opened, ready_for_review] # PR作成時とready for reviewをクリックした時
+    types: [opened, edited, ready_for_review] # PR作成時とready for reviewをクリックした時
   pull_request_review_comment:
     types: [created, edited]
   issue_comment:
@@ -22,9 +22,8 @@ jobs:
   review:
     runs-on: ubuntu-latest
     # Pull RequestをDraftで作成したときは実行しない
-    # PRからコメントに@ai-reviewとメンションをしたときに実行する
-    if: github.event.pull_request.draft == false ||
-      (github.event.comment != null && contains(github.event.comment.body, '@ai-review'))
+    # PRに@ai-reviewとコメントした時は実行する
+    if: github.event.comment != null && contains(github.event.comment.body, '@ai-review')
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@main
