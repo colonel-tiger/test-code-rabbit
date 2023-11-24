@@ -12,13 +12,19 @@ on:
   issue_comment:
     types: [created, edited]
 
+concurrency:
+  group: ${{ github.repository }}-${{ github.event.number || github.head_ref ||
+    github.sha }}-${{ github.workflow }}-${{ github.event_name ==
+    'pull_request_review_comment' && 'pr_comment' || 'pr' }}
+  cancel-in-progress: ${{ github.event_name != 'pull_request_review_comment' }}
+
 jobs:
   review:
     runs-on: ubuntu-latest
     # Pull RequestをDraftで作成したときは実行しない
     # PRからコメントに@ai-reviewとメンションをしたときに実行する
     if: github.event.pull_request.draft == false ||
-      github.event.comment.body == 'ai-review'
+      (github.event.comment != null && contains(github.event.comment.body, '@ai-review'))
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@main
