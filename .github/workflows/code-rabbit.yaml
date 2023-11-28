@@ -3,6 +3,7 @@ name: OpenAI Reviewer
 permissions:
   contents: read
   pull-requests: write
+  issues: read
 
 on:
   pull_request:
