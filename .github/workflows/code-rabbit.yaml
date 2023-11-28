@@ -1,12 +1,18 @@
 name: OpenAI Reviewer
 
 permissions:
-  contents: read
-  pull-requests: write
+  read-all
+  # contents: read
+  # pull-requests: write
+  # issues: read
 
 on:
   pull_request:
-    types: [opened, ready_for_review]
+    types: [opened, ready_for_review] # PR作成時とready for reviewをクリックした時
+  pull_request_review_comment:
+    types: [created, edited]
+  issue_comment:
+    types: [created, edited]
 
 concurrency:
   group: ${{ github.repository }}-${{ github.event.number || github.head_ref ||
@@ -17,7 +23,10 @@ concurrency:
 jobs:
   review:
     runs-on: ubuntu-latest
-    if: github.event.pull_request.draft == false
+    # Pull RequestをDraftで作成したときは実行しない
+    # PRに@ai-reviewとコメントした時は実行する
+    if: github.event.pull_request.draft == false ||
+      (github.event.comment != null && contains(github.event.comment.body, '@ai-review'))
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@main
